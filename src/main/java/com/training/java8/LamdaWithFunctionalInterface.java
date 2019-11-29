@@ -1,6 +1,10 @@
 package com.training.java8;
-
-public class FunctionalInterfaceExample {
+/**
+ * Lamda Expression with a Functional Interface
+ * @author jatin.sutaria
+ *
+ */
+public class LamdaWithFunctionalInterface {
 
 	public static void main(String args[]) 
     { 

@@ -1,10 +1,30 @@
-package com.training.java8;
+package com.training.java8test;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class EmployeeFunctionalInterfaceExample {
-
+public class EmployeeLamdaExample {
+	
+	private static Employee getHighestPayingManager(List<Employee> emps){
+//		return emps.stream().filter(emp -> EmployeeLamdaExample.isManager(emp))
+//				.max(Comparator.naturalOrder())
+//				.get();
+		return emps.stream().filter(emp -> EmployeeLamdaExample.isManager(emp))
+				.max(Comparator.naturalOrder())
+				.get();
+				
+	}
+	
+	private static boolean isManager(Employee emp){
+		if(emp.getRole().equalsIgnoreCase("Manager")){
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
 	public static void main(String args[]){
 		Employee employee1 = new  Employee("Amit", "ADMIN", 10000l);
 		Employee employee2 = new  Employee("Samit", "ADMIN", 20000l);
@@ -36,18 +56,9 @@ public class EmployeeFunctionalInterfaceExample {
 		emps.add(employee11);
 		emps.add(employee12);
 		
-		CalculateTDS tds = (Employee emp) -> (emp.getSalary() * 10/100);
+		Employee highestPayingManager = getHighestPayingManager(emps);
+		System.out.println(highestPayingManager.getName()+" "+highestPayingManager.getSalary());
 		
-//		for(Employee emp : emps){
-//			System.out.println(tds.calculate(emp));
-//		}
-		
-		emps.stream().forEach(emp->System.out.println(tds.calculate(emp)));
 	}
-}
 
-@FunctionalInterface
-interface CalculateTDS{
-	
-	Long calculate(Employee emp);
 }

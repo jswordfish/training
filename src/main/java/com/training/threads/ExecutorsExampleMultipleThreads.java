@@ -41,7 +41,7 @@ public class ExecutorsExampleMultipleThreads {
         executorService.submit(task1);
         executorService.submit(task2);
         executorService.submit(task3);
-        throw new RuntimeException();
+       // throw new RuntimeException();
        // executorService.shutdown();
     }
 }

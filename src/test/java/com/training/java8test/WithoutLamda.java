@@ -1,4 +1,4 @@
-package com.training.java8;
+package com.training.java8test;
 
 import java.util.ArrayList;
 import java.util.List;
