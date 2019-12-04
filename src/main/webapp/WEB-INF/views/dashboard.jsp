@@ -8,7 +8,7 @@
     <body>
         <table>
             <tr>
-                <td>Welcome ${firstname}</td>
+                <td>Welcome ${firstname}.</td>
             </tr>
             <tr>
             </tr>

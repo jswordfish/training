@@ -23,7 +23,8 @@ public class TestCompany {
 		Company company = new Company();
 		company.setCompanyId("Abm");
 		company.setCompanyName("Abmware");
-		company.setCompanyLocation("Mumbai");
+		company.setCompanyLocation("aaa");
+		company.setCompanyDescription("nanana");
 		company.setSinglePointOfContactEmail("contact@thev2technologies.com");
 		companyService.saveOrUpdate(company);
 	}

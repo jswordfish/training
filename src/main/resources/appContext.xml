@@ -92,6 +92,32 @@
        <property name="entityManagerFactory" ref="entityManagerFactory" />
        <property name="defaultTimeout" value="1800"></property>
    </bean>
+   
+   <aop:config>
+     
+        <!-- Spring AOP Pointcut definitions -->
+        <aop:pointcut id="loggingOperation"
+            expression="execution(* com.training.project.services.impl.CompanyServiceImpl.*(..))" />
+        
+ 
+        <!-- Spring AOP aspect 1 -->
+        <aop:aspect id="loggingAspect" ref="loggingAspectBean">
+             
+            <!-- Spring AOP advises -->
+            <aop:before pointcut-ref="loggingOperation" method="logBefore1" />
+            <aop:after pointcut-ref="loggingOperation" method="logAfter1" />
+         
+             
+        </aop:aspect>
+ 
+       
+    </aop:config>
+ 
+    <!-- Spring AOP aspect instances -->
+    <bean id="loggingAspectBean" class="com.training.project.aop.LogCRUDAspect" />
+   
+   
+   
 
 <!-- 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" /> -->
 <!--     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" /> -->

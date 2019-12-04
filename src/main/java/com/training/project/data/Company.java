@@ -1,12 +1,15 @@
 package com.training.project.data;
 
 import javax.persistence.Entity;
+
+import org.hibernate.envers.Audited;
 /**
  * Primary key companyId
  * @author jsutaria
  *
  */
 @Entity
+@Audited
 public class Company extends Base{
 	
 	String companyLocation;

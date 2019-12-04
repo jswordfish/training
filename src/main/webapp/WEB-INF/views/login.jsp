@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
@@ -10,15 +11,17 @@
 
 
 
-<link href="${pageContext.request.contextPath}/resources/bootstrap.min.css" rel="stylesheet" >
-<link href="${pageContext.request.contextPath}/resources/twenty20.min.css" rel="stylesheet" >
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous"></script>
-	
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" > </link>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="resources/responsive.css" rel="stylesheet" type="text/css">
+	<link href="resources/pnotify.custom.min.css" rel="stylesheet" type="text/css">  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/pnotify.custom.min.js"></script>
+	<script type="text/javascript" src="scripts/custom.js"></script>
+    
 
 
 </head>  
@@ -70,11 +73,49 @@
                           <li><span class="fa fa-check text-success"></span> Project Ratings <small>(Choose the right one)</small></li>
                          <li><a href="${pageContext.request.contextPath}/static/readMe.html"><u>Read more</u></a></li>
                       </ul>
-                      <p><a href="/new-customer/" class="btn btn-info btn-block">Yes please, register now!</a></p>
+                      <p><a href="javascript:notify('Info', 'Feature will be released soon')" class="btn btn-info btn-block">Yes please, register now!</a></p>
                   </div>
               </div>
           </div>
       </div>
   </div>
+  
+  <script>
+  
+		
+           
+	    
+	    function notify(messageType, message){
+		 var notification = 'Information';
+			 $(function(){
+				 new PNotify({
+				 title: notification,
+				 text: message,
+				 type: messageType,
+				 styling: 'bootstrap3',
+				 hide: true
+			     });
+			 }); 	
+		}
+		
+		
+	
+        </script>
+
+	<c:if test="${msgtype != null}">
+		 <script>
+	 var notification = 'Information';
+	 $(function(){
+		 new PNotify({
+	         title: notification,
+	         text: '${message}',
+	         type: '${msgtype}',
+	         styling: 'bootstrap3',
+	         hide: true
+	     });
+	 }); 	 
+      </script>
+</c:if>
+  
   </body>
 </html>  
