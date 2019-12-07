@@ -1,5 +1,8 @@
 package com.training.project.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.training.java8.Employee;
 import com.training.project.common.ProjectException;
 import com.training.project.dto.Login;
 
@@ -36,6 +40,22 @@ public class LoginController {
     return mav;
   }
   
+  
+  @RequestMapping(value = "/showtable", method = RequestMethod.GET)
+  public ModelAndView showtable(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("show_table");
+   List<Employee> emps = new ArrayList<Employee>();
+   Employee employee1 = new Employee("Jatin", "Director", 10000l);
+   Employee employee2 = new Employee("Amit", "Director", 10000l);
+   Employee employee3 = new Employee("Afzal", "Developer", 10000l);
+   Employee employee4 = new Employee("Suresh", "Admin", 20000l);
+   emps.add(employee1);
+   emps.add(employee2);
+   emps.add(employee3);
+   emps.add(employee4);
+   mav.addObject("list", emps);
+    return mav;
+  }
   
   
   @ExceptionHandler(ProjectException.class)
