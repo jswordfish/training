@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.training.java8.Employee;
 import com.training.project.common.ProjectException;
+import com.training.project.data.Company;
 import com.training.project.dto.Login;
 
 
@@ -67,6 +68,8 @@ public class LoginController {
       modelAndView.addObject("message", ex.getMessage());
       return modelAndView;
   }
+  
+  
   
   
   

@@ -29,7 +29,31 @@
 
     <tx:annotation-driven transaction-manager="transactionManager" />
     
+    <bean name="traceInterceptor" class="com.training.project.interceptors.MyTraceInterceptor">
+     <property name="enterMessage" value="Enter: $[targetClassShortName].$[methodName]($[arguments])"/>
+     <property name="exitMessage" value="Exit: $[targetClassShortName].$[methodName]() : $[invocationTime]ms : $[returnValue]"/>
+    </bean>
     
+<!--     <bean id="tempService" class="com.training.project.interceptors.TempService"> -->
+		
+<!-- 	</bean> -->
+    
+<!--     <bean -->
+<!-- 		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"> -->
+<!-- 		<property name="beanNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>*Service</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 		<property name="proxyTargetClass" value="true"></property> -->
+<!-- 		<property name="interceptorNames"> -->
+<!-- 			<list> -->
+<!-- 				<value>traceInterceptor</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+		
+<!-- 		<property name="order" value="2"></property> -->
+<!-- 	</bean> -->
     
     
     <bean id="dataSource" class = "com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
@@ -106,7 +130,7 @@
             <!-- Spring AOP advises -->
             <aop:before pointcut-ref="loggingOperation" method="logBefore1" />
             <aop:after pointcut-ref="loggingOperation" method="logAfter1" />
-         
+         	
              
         </aop:aspect>
  
