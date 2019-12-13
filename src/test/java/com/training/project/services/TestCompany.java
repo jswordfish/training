@@ -26,12 +26,12 @@ public class TestCompany {
 	@Test
 	@Rollback(value=false)
 	public void testCreateCompany() {
-		logger.info("Helloe world");
-		logger.debug("Helloeqqq world");
+		logger.info("Helloe world111111111");
+		logger.debug("Helloeqqq world1111111111111111111111");
 		Company company = new Company();
 		company.setCompanyId("Abm");
 		company.setCompanyName("Abmware");
-		company.setCompanyLocation("aaabbbaa");
+		company.setCompanyLocation("aaabbbaaqqqqqqqqqqq");
 		company.setCompanyDescription("nananachange");
 		company.setSinglePointOfContactEmail("aacontact@thev2technologies.com");
 		companyService.saveOrUpdate(company);
