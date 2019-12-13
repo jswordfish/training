@@ -36,7 +36,9 @@
                                                 <th>Name</th>
                                                 <th  >Location</th>
 												<th>Company ID</th>
-                                                
+												
+												<th>Update</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -50,7 +52,8 @@
 						                      		<td>${comp.companyName}  </td>
 						                      		<td> ${comp.companyLocation}</td>
 						                      		<td>${comp.companyId}  </td>
-						                      		
+						                      		<td><a href="company?cid=${comp.id}">Update Company</a></td>
+													<td><a href="deletecompany?cid=${comp.id}">Delete Company</a></td>
 						                      	</tr>
 						                      	</c:forEach>   
 						                      </tbody>

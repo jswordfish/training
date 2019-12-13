@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.training.project.data.Company;
@@ -25,11 +26,25 @@ public class CompanyController {
 	CompanyRepository companyRep;
 	
 	@RequestMapping(value = "/company", method = RequestMethod.GET)
-	  public ModelAndView company(HttpServletRequest request, HttpServletResponse response) {
+	  public ModelAndView company(@RequestParam(name= "cid", required = false) Long cid, HttpServletRequest request, HttpServletResponse response) {
 	    ModelAndView mav = new ModelAndView("company");
-	   Company company = new Company();
+	    Company company = null;
+	    if(cid != null){
+	    	company = companyRep.findById(cid).get();
+	    }
+	    else{
+	    	company = new Company();
+	    }
+	   
 	   mav.addObject("company", company);
 	    return mav;
+	  }
+	
+	//deletecompany
+	@RequestMapping(value = "/deletecompany", method = RequestMethod.GET)
+	  public ModelAndView deletecompany(@RequestParam(name= "cid", required = true) Long cid,HttpServletRequest request, HttpServletResponse response) {
+	   companyRep.deleteById(cid);
+	    return companies(request, response);
 	  }
 	
 	@RequestMapping(value = "/companies", method = RequestMethod.GET)

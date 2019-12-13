@@ -11,6 +11,7 @@
                 <tr>
                     <td> <label>Company Name</label></td>
                     <td><form:input path="company.companyName"/></td>
+					<form:hidden path="company.id" />
                 </tr>
                  <tr>
                     <td> <label>Company ID</label></td>
