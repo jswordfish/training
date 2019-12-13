@@ -30,6 +30,17 @@
                     <td><form:input path="company.singlePointOfContactPhone"/></td>
                 </tr>
 				<tr>
+                    <td> <label>Company Type</label></td>
+                   <td> <form:select path="company.cType">
+							  
+						 <form:options items="${companyTypes}" />
+					</form:select></td>
+                </tr>
+				<tr>
+                    <td> <label>Is Company Active?</label></td>
+                   <td> <form:checkbox path="company.active" id="active"/> </td>
+                </tr>
+				<tr>
                     <td> <label></label></td>
                     <td><input class="save" type="submit" value="Save"></td>
                 </tr>

@@ -1,5 +1,6 @@
 package com.training.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.training.project.data.Company;
+import com.training.project.data.CompanyType;
 import com.training.project.repositories.CompanyRepository;
 import com.training.project.services.CompanyService;
 @Controller
@@ -35,7 +37,11 @@ public class CompanyController {
 	    else{
 	    	company = new Company();
 	    }
-	   
+	    List<String> types = new ArrayList<String>();
+	    for(CompanyType companyType : CompanyType.values()){
+	    	types.add(companyType.name());
+	    }
+	   mav.addObject("companyTypes", types);
 	   mav.addObject("company", company);
 	    return mav;
 	  }
