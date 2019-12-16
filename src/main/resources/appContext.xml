@@ -128,7 +128,7 @@
         <aop:aspect id="loggingAspect" ref="loggingAspectBean">
              
             <!-- Spring AOP advises -->
-            <aop:before pointcut-ref="loggingOperation" method="logBefore1" />
+          <!--    <aop:before pointcut-ref="loggingOperation" method="logBefore1" /> -->
             <aop:after pointcut-ref="loggingOperation" method="logAfter1" />
          	
              
